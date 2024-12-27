@@ -1,0 +1,116 @@
+html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 94%;
+      width: 100%;
+    }
+    #overviewDiv {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    z-index: 1;
+    overflow: hidden;
+    transform: translate(0, -50%) translateY(15%); 
+    }
+    #infoDiv {
+      position: absolute;
+      top: 15px;
+      left: 60px;
+      margin-top: 60px; /* 调整这个值来控制下移的距离 */
+    }
+ 
+    #infoDiv input {
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+    }
+    #optionsDiv {
+      background-color: white;
+      color: black;
+      padding: 0px;
+      max-width: 800px;
+      }
+
+      #switch-btn {
+        margin-right: 10px; /* 按钮之间的间距 */
+      }
+      
+      #extentDiv {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        z-index: 11;
+      }
+      #info {
+        padding: 5px;
+        margin: 5px;
+        width: 120px;
+        text-align: center;
+      }
+      esri-elevation-profile.esri-component.esri-widget--panel {
+      
+        width: 400px !important;
+      }
+      #basemapGallery2D {
+        width: 300px; /* 设置宽度 */
+        height: 300px; /* 设置高度 */
+        /* 还可以添加边距、边框等样式 */
+      }
+      #basemapGallery3D {
+        width: 300px; /* 设置宽度 */
+        height: 300px; /* 设置高度 */
+        /* 还可以添加边距、边框等样式 */
+      }
+      
+      /* 针对ElevationProfile的容器设置宽度 */
+      .esri-elevation-profile.esri-widget--panel {
+        width: 400px !important; /* 设置宽度 */
+      }
+
+      /* 针对ElevationProfile的其他元素进行样式调整 */
+      .esri-elevation-profile .esri-widget__heading {
+        font-size: 16px; /* 调整标题字体大小 */
+      }
+
+      .esri-elevation-profile .esri-widget__body {
+        background-color: #f4f4f4; /* 调整背景色 */
+      }
+
+      .esri-elevation-profile .esri-widget__container {
+        border: 1px solid #ddd; /* 添加边框 */
+      }
+
+
+      #coordinates {
+        position: fixed; /* 使用fixed而不是absolute以相对于视口定位 */
+        bottom: 50px;    /* 距离底部50像素 */
+        right: 10px;     /* 距离右边10像素 */
+        background: transparent; /* 设置背景为透明 */
+        padding: 5px;
+        z-index: 100;    /* 确保它在其他元素之上 */
+        font-size: 12px; /* 增加字体大小，可以根据需要调整 */
+        font-weight: bold; /* 设置字体加粗 */
+      }
+      
+      
+      
+
+
+      #container {
+        width: 100%;
+        height: 100%;
+        /* 确保没有设置max-width或max-height */
+      }
+
+      
+      #layer1 {
+        display: none;
+      }
+      .marker-point {
+        display: none;
+      }
+      
+      

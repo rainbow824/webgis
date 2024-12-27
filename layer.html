@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Sidebar Layer </title>
+    <link rel="stylesheet" href="../webgis/css/map.css"/>
+    <link rel="stylesheet" href="../webgis/css/index.css"/>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.30/"></script>
+    <link href="//unpkg.com/layui@2.9.17/dist/css/layui.css" rel="stylesheet">
+    <!-- <script src="js/webgis1.js"></script> -->
+  </head>
+  <ul class="layui-nav">
+    <!-- <li class="layui-nav-item "><a href="about.html">主页</a></li> -->
+    <li class="layui-nav-item layui-this">
+      <a href="layer.html">2D页面</a>
+    </li>
+    <li class="layui-nav-item ">
+      <a href="22.html">3D页面</a>
+    </li>
+  </ul>
+
+  <a href="javascript:void(0)" class="toggle-btn">
+    <!-- 三道横线的图标，可以用字符或图片表示 -->
+    &#9776;
+  </a>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <div id="main-content"></div>
+      <ul class="layui-nav layui-nav-tree" lay-filter="sidebar-nav">
+        <!-- <li class="layui-nav-item"> -->
+          <!-- <a href="javascript:;">底图选择</a>
+          <dl class="layui-nav-child">
+              
+            <dd>
+              <a href="javascript:;" id="toggleMap1">底图1</a>
+            </dd>
+            <dd>
+              <a href="javascript:;" id="toggleMap2">底图2</a>
+            </dd>
+            <dd>
+              <a href="javascript:;" id="toggleMap3">底图3</a>
+            </dd>
+            </dl> -->
+        <li class="layui-nav-item">
+            <a href="javascript:;">海洋地理边界</a>
+            <dl class="layui-nav-child">
+                
+              <dd>
+                <a href="javascript:;" id="toggleStreets">交通</a>
+            </dd>
+              <dd>
+                    <a href="javascript:;" id="toggleSea">领海</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" id="toggleNear">毗连区</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" id="toggleEconomic">专厘经济区</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;">外大陆架(国别)</a>
+                    <dl class="layui-nav-child">
+                      <dd><a href="javascript:;" id="toggleAgt">阿根廷</a></dd>
+                      <dd><a href="javascript:;" id="toggleAm">阿曼</a></dd>
+                      <dd><a href="javascript:;" id="toggleAel">爱尔兰</a></dd>
+                      <dd><a href="javascript:;" id="toggleAgl">安哥拉</a></dd>
+                      <dd><a href="javascript:;" id="toggleAdly">澳大利亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleBbds">巴巴多斯</a></dd>
+                      <dd><a href="javascript:;" id="toggleBhm">巴哈马</a></dd>
+                      <dd><a href="javascript:;" id="toggleBjst">巴基斯坦</a></dd>
+                      <dd><a href="javascript:;" id="toggleBx">巴西</a></dd>
+                      <dd><a href="javascript:;" id="toggleBd">冰岛</a></dd>
+                      <dd><a href="javascript:;" id="toggleDm">丹麦</a></dd>
+                      <dd><a href="javascript:;" id="toggleEls">俄罗斯</a></dd>
+                      <dd><a href="javascript:;" id="toggleFg">法国</a></dd>
+                      <dd><a href="javascript:;" id="toggleFlb">菲律宾</a></dd>
+                      <dd><a href="javascript:;" id="toggleFj">斐济</a></dd>
+                      <dd><a href="javascript:;" id="toggleGb">古巴</a></dd>
+                      <dd><a href="javascript:;" id="toggleGyn">圭亚那</a></dd>
+                      <dd><a href="javascript:;" id="toggleHg">韩国</a></dd>
+                      <dd><a href="javascript:;" id="toggleJlbs">基里巴斯</a></dd>
+                      <dd><a href="javascript:;" id="toggleJnd">加拿大</a></dd>
+                      <dd><a href="javascript:;" id="toggleJn">加纳</a></dd>
+                      <dd><a href="javascript:;" id="toggleJn">加蓬</a></dd>
+                      <dd><a href="javascript:;" id="toggleKtdw">科特迪瓦</a></dd>
+                      <dd><a href="javascript:;" id="toggleKny">肯尼亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleKkqd">库克群岛</a></dd>
+                      <dd><a href="javascript:;" id="toggleLbly">利比里亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleMdjsj">马达加斯加</a></dd>
+                      <dd><a href="javascript:;" id="toggleMedf">马尔代夫</a></dd>
+                      <dd><a href="javascript:;" id="toggleMlxy">马来西亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleMlqs">毛里求斯</a></dd>
+                      <dd><a href="javascript:;" id="toggleMjlg">孟加拉国</a></dd>
+                      <dd><a href="javascript:;" id="toggleMklnxy">密克罗尼西亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleMd">缅甸</a></dd>
+                      <dd><a href="javascript:;" id="toggleMsbk">莫桑比克</a></dd>
+                      <dd><a href="javascript:;" id="toggleMxg">墨西哥</a></dd>
+                      <dd><a href="javascript:;" id="toggleNmby">纳米比亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleNf">南非</a></dd>
+                      <dd><a href="javascript:;" id="toggleNjlg">尼加拉瓜</a></dd>
+                      <dd><a href="javascript:;" id="toggleNrly">尼日利亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleNw">挪威</a></dd>
+                      <dd><a href="javascript:;" id="togglePl">帕劳</a></dd>
+                      <dd><a href="javascript:;" id="togglePty">葡萄牙</a></dd>
+                      <dd><a href="javascript:;" id="toggleRb">日本</a></dd>
+                      <dd><a href="javascript:;" id="toggleSse">塞舌尔</a></dd>
+                      <dd><a href="javascript:;" id="toggleSllk">斯里兰卡</a></dd>
+                      <dd><a href="javascript:;" id="toggleSln">苏里南</a></dd>
+                      <dd><a href="javascript:;" id="toggleSml">索马里</a></dd>
+                      <dd><a href="javascript:;" id="toggleTsny">坦桑尼亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleTj">汤加</a></dd>
+                      <dd><a href="javascript:;" id="toggleTlndydbg">特立尼达与多巴哥</a></dd>
+                      <dd><a href="javascript:;" id="toggleWlg">乌拉圭</a></dd>
+                      <dd><a href="javascript:;" id="toggleXby">西班牙</a></dd>
+                      <dd><a href="javascript:;" id="toggleXxl">新西兰</a></dd>
+                      <dd><a href="javascript:;" id="toggleYm">也门</a></dd>
+                      <dd><a href="javascript:;" id="toggleYd">印度</a></dd>
+                      <dd><a href="javascript:;" id="toggleYdnxy">印度尼西亚</a></dd>
+                      <dd><a href="javascript:;" id="toggleYg">英国</a></dd>
+                      <dd><a href="javascript:;" id="toggleYn">越南</a></dd>
+                      <dd><a href="javascript:;" id="toggleZl">智利</a></dd>
+                      <dd><a href="javascript:;" id="toggleZg">中国</a></dd>
+                    </dl>
+                </dd>
+                <dd>
+                  <a href="javascript:;">外大陆架</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" id="toggleCommunity">委员会建议-外部边界</a></dd>
+                    <dd><a href="javascript:;" id="toggleAdvise">委员会建议-多边形</a></dd>
+                    <dd><a href="javascript:;" id="toggleUnAdvise">委员会未认可-多边形</a></dd>
+                    <dd><a href="javascript:;" id="toggleOutside">各国主张-外部边界</a></dd>
+                    <dd><a href="javascript:;" id="toggleCountryAdvise">各国主张-多边形</a></dd>
+                  </dl>            
+                </dd>
+                <dd>
+                  <a href="javascript:;" id="toggleSea2">世界主要海洋边界</a>
+                </dd>
+                <dd>
+                  <a href="javascript:;" id="toggleSea3">世界大洋分界线</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">生物地理分布</a>
+          <dl class="layui-nav-child">
+              <dd>
+                  <a href="javascript:;">OBIS</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" id="toggleBsdwm">半索动物门</a></dd>
+                    <dd><a href="javascript:;" id="toggleDmg">多毛纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleWsdwym">尾索动物亚门</a></dd>
+                    <dd><a href="javascript:;" id="toggleMedwm">毛颚动物门</a></dd>
+                    <dd><a href="javascript:;" id="toggleHsg">海参纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleHxg">海星纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleHnm">海牛目</a></dd>
+                    <dd><a href="javascript:;" id="toggleHbhg">海百合纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleHmdwm">海绵动物门</a></dd>
+                    <dd><a href="javascript:;" id="toggleHdg">海胆纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleHzzg">海蜘蛛纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleShg">珊瑚纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleWzdwm">腕足动物门</a></dd>
+                    <dd><a href="javascript:;" id="toggleSwg">蛇尾纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleRjg">软甲纲</a></dd>
+                    <dd><a href="javascript:;" id="toggleXwdwm">须腕动物门</a></dd>
+                    <dd><a href="javascript:;" id="toggleJxm">鲸下目</a></dd>
+
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleAnimal">生物地理分布</a>
+              </dd>
+          </dl>
+      </li>
+        
+        <li class="layui-nav-item">
+          <a href="javascript:;">划区管理工具</a>
+          <dl class="layui-nav-child">
+              <dd>
+                  <a href="javascript:;">WDPA</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" id="toggleWdpa">WDPA</a></dd>
+                    <dd><a href="javascript:;" id="toggleWdpa_point">WDPA_Point</a></dd>
+                    <dd><a href="javascript:;" id="toggleWdoecm">WDOECM</a></dd>
+              </dd>
+              <dd>
+                  <a href="javascript:;">VME</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" id="toggleVme">VME</a></dd>
+                    <dd><a href="javascript:;" id="toggleBtm">BTM</a></dd>
+                    <dd><a href="javascript:;" id="toggleOther">OTHER</a></dd>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="togglePssa">PSSA</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleGpi3030">GPI3030</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleApei">APEI</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleFish">鲸鱼保护区</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleS">南极保护区</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleFao">FAO捕捞区</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleGuan">区域渔业组织管理区域</a>
+              </dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">具有重要生态意义的海域</a>
+          <dl class="layui-nav-child">
+              <dd>
+                  <a href="javascript:;" id="toggleEbsas">EBSAS</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;" id="toggleIMMA" >IMMA</a>
+              </dd>
+              <dd>
+                  <a href="javascript:;">IBA</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" id="toggleIbaspnt">IBAs_ PNT</a></dd>
+                    <dd><a href="javascript:;" id="toggleIbaspol">IBAs_POL</a></dd>
+              </dd>
+              <dd>
+                  <a href="javascript:;">KBA</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" id="togglekbaspnt">KBAs_PNT</a></dd>
+                    <dd><a href="javascript:;" id="togglekbaspol">KBAs_POL</a></dd>
+              </dd>
+              <dd>
+                <a href="javascript:;" id="togglepaphs">PAPHS</a>
+            </dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">海洋空间及资源</a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" id="toggleduo1">多金厘结核矿区</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" id="togglefu">富钴结壳矿区</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" id="toggleduo2">多金属硫化物矿区</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" id="togglezhong">中国矿区</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">海洋地理信息</a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" id="toggleyanhai">沿海国家</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" id="togglemeiguo">海外军事基地-美国</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" id="togglemain">世界主要港口</a>
+                </dd>
+            </dl>
+        </li>
+        <!-- ... 更多顶级菜单项 ... -->
+    </ul>
+    </div>
+    <div id="viewDiv"></div>
+
+    <script>
+      require([
+      "esri/Map", 
+      "esri/views/MapView", 
+      "esri/layers/TileLayer",
+        "esri/layers/FeatureLayer",
+        "esri/widgets/ScaleBar",
+        "esri/geometry/Point",
+        "esri/layers/MapImageLayer", 
+        "esri/widgets/Search",
+        "esri/widgets/LayerList"], 
+      (Map, MapView, TileLayer, FeatureLayer, ScaleBar, Point, MapImageLayer,Search,LayerList) => {
+        
+        // 图层定义
+        // const map1Layer = new FeatureLayer({
+        //   url: "https://localhost:6443/arcgis/rest/services/%E5%BA%95%E5%9B%BE1/%E5%BA%95%E5%9B%BE1/MapServer",
+        //   id: "map1",
+        //   visible: false
+        // });
+        const transportationLayer = new TileLayer({
+          url: "https://server.arcgisonline.com/arcgis/rest/services/Reference/World_Transportation/MapServer",
+          id: "streets",
+          visible: false
+        });
+        const seaLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BE%E5%B1%82/%E5%85%AC%E6%B5%B7/MapServer",
+          id: "sea",
+          visible: false
+        });
+        const nearLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BE%E5%B1%82/%E6%AF%97%E8%BF%9E%E5%8C%BA/MapServer",
+          id: "near",
+          visible: false
+        });
+        const economicLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BE%E5%B1%82/%E4%B8%93%E5%B1%9E%E7%BB%8F%E6%B5%8E%E5%8C%BA/MapServer",
+          id: "economic",
+          visible: false
+        });
+
+
+
+        const agtLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E9%98%BF%E6%A0%B9%E5%BB%B7/MapServer",
+          id: "agt",
+          visible: false
+        });
+        const amLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E9%98%BF%E6%9B%BC/MapServer",
+          id: "am",
+          visible: false
+        });
+        const aelLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E7%88%B1%E5%B0%94%E5%85%B0/MapServer",
+          id: "ael",
+          visible: false
+        });
+        const aglLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%AE%89%E5%93%A5%E6%8B%89/MapServer",
+          id: "agl",
+          visible: false
+        });
+
+        const adlyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%BE%B3%E5%A4%A7%E5%88%A9%E4%BA%9A/MapServer",
+          id: "adly",
+          visible: false
+        });
+        const bbdsLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%B7%B4%E5%B7%B4%E5%A4%9A%E6%96%AF/MapServer",
+          id: "bbds",
+          visible: false
+        });
+        const bhmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%B7%B4%E5%93%88%E9%A9%AC/MapServer",
+          id: "bhm",
+          visible: false
+        });
+        const bjstLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%B7%B4%E5%9F%BA%E6%96%AF%E5%9D%A6/MapServer",
+          id: "bjst",
+          visible: false
+        });
+        const bxLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%B7%B4%E8%A5%BF/MapServer",
+          id: "bx",
+          visible: false
+        });
+        const bdLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%86%B0%E5%B2%9B/MapServer",
+          id: "bd",
+          visible: false
+        });
+        const dmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E4%B8%B9%E9%BA%A6/MapServer",
+          id: "dm",
+          visible: false
+        });
+        const elsLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E4%BF%84%E7%BD%97%E6%96%AF/MapServer",
+          id: "els",
+          visible: false
+        });
+        const fgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%B3%95%E5%9B%BD/MapServer",
+          id: "fg",
+          visible: false
+        });
+        const flbLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%8F%B2%E5%BE%8B%E5%AE%BE/MapServer",
+          id: "flb",
+          visible: false
+        });
+        const fjLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%96%90%E6%B5%8E/MapServer",
+          id: "fj",
+          visible: false
+        });
+        const gbLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%8F%A4%E5%B7%B4/MapServer",
+          id: "gb",
+          visible: false
+        });
+        const gynLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%9C%AD%E4%BA%9A%E9%82%A3/MapServer",
+          id: "gyn",
+          visible: false
+        });
+        const hgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E9%9F%A9%E5%9B%BD/MapServer",
+          id: "hg",
+          visible: false
+        });
+        const jlbsLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%9F%BA%E9%87%8C%E5%B7%B4%E6%96%AF/MapServer",
+          id: "jlbs",
+          visible: false
+        });
+        const jndLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%8A%A0%E6%8B%BF%E5%A4%A7/MapServer",
+          id: "jnd",
+          visible: false
+        });
+        const jnLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%8A%A0%E7%BA%B3/MapServer",
+          id: "jn",
+          visible: false
+        });
+        const jpLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%8A%A0%E8%93%AC/MapServer",
+          id: "jp",
+          visible: false
+        });
+        const ktdwLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E7%A7%91%E7%89%B9%E8%BF%AA%E7%93%A6/MapServer",
+          id: "ktdw",
+          visible: false
+        });
+        const knyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%82%AF%E5%B0%BC%E4%BA%9A/MapServer",
+          id: "kny",
+          visible: false
+        });
+        const kkqdLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%BA%93%E5%85%8B%E7%BE%A4%E5%B2%9B/MapServer",
+          id: "kkqd",
+          visible: false
+        });
+        const lblyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%88%A9%E6%AF%94%E9%87%8C%E4%BA%9A/MapServer",
+          id: "lbly",
+          visible: false
+        });
+        const mdjsjLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E9%A9%AC%E8%BE%BE%E5%8A%A0%E6%96%AF%E5%8A%A0/MapServer",
+          id: "mdjsj",
+          visible: false
+        });
+        const medfLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E9%A9%AC%E5%B0%94%E4%BB%A3%E5%A4%AB/MapServer",
+          id: "medf",
+          visible: false
+        });
+        const mlxyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E9%A9%AC%E6%9D%A5%E8%A5%BF%E4%BA%9A/MapServer",
+          id: "mlxy",
+          visible: false
+        });
+        const mlqsLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%AF%9B%E9%87%8C%E6%B1%82%E6%96%AF/MapServer",
+          id: "mlqs",
+          visible: false
+        });
+        const mjlgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%AD%9F%E5%8A%A0%E6%8B%89%E5%9B%BD/MapServer",
+          id: "mjlg",
+          visible: false
+        });
+        const mklnxyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%AF%86%E5%85%8B%E7%BD%97%E5%B0%BC%E8%A5%BF%E4%BA%9A/MapServer",
+          id: "mklnxy",
+          visible: false
+        });
+        const mdLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E7%BC%85%E7%94%B8/MapServer",
+          id: "md",
+          visible: false
+        });
+
+        const msbkLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%8E%AB%E6%A1%91%E6%AF%94%E5%85%8B/MapServer",
+          id: "msbk",
+          visible: false
+        });
+        const mxgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%A2%A8%E8%A5%BF%E5%93%A5/MapServer",
+          id: "mxg",
+          visible: false
+        });
+        const nmbyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E7%BA%B3%E7%B1%B3%E6%AF%94%E4%BA%9A/MapServer",
+          id: "nmby",
+          visible: false
+        });
+        const nfLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%8D%97%E9%9D%9E/MapServer",
+          id: "nf",
+          visible: false
+        });
+        const njlgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%B0%BC%E5%8A%A0%E6%8B%89%E7%93%9C/MapServer",
+          id: "njlg",
+          visible: false
+        });
+        const nrlyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%B0%BC%E6%97%A5%E5%88%A9%E4%BA%9A/MapServer",
+          id: "nrly",
+          visible: false
+        });
+        const nwLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%8C%AA%E5%A8%81/MapServer",
+          id: "nw",
+          visible: false
+        });
+        const plLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%B8%95%E5%8A%B3/MapServer",
+          id: "pl",
+          visible: false
+        });
+
+
+        const ptyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%91%A1%E8%90%84%E7%89%99/MapServer",
+          id: "pty",
+          visible: false
+        });
+        const rbLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%97%A5%E6%9C%AC/MapServer",
+          id: "rb",
+          visible: false
+        });
+        const sseLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%A1%9E%E8%88%8C%E5%B0%94/MapServer",
+          id: "sse",
+          visible: false
+        });
+        const sllkLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%96%AF%E9%87%8C%E5%85%B0%E5%8D%A1/MapServer",
+          id: "sllk",
+          visible: false
+        });
+        const slnLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%8B%8F%E9%87%8C%E5%8D%97/MapServer",
+          id: "sln",
+          visible: false
+        });
+        const smlLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E7%B4%A2%E9%A9%AC%E9%87%8C/MapServer",
+          id: "sml",
+          visible: false
+        });
+        const tsnyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%9D%A6%E6%A1%91%E5%B0%BC%E4%BA%9A/MapServer",
+          id: "tsny",
+          visible: false
+        });
+        const tjLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%B1%A4%E5%8A%A0/MapServer",
+          id: "tj",
+          visible: false
+        });
+        const tlndydbgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E7%89%B9%E7%AB%8B%E5%B0%BC%E8%BE%BE%E4%B8%8E%E5%A4%9A%E5%B7%B4%E5%93%A5/MapServer",
+          id: "tlndydbg",
+          visible: false
+        });
+        const wlgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E4%B9%8C%E6%8B%89%E5%9C%AD/MapServer",
+          id: "wlg",
+          visible: false
+        });
+        const xbyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%A5%BF%E7%8F%AD%E7%89%99/MapServer",
+          id: "xby",
+          visible: false
+        });
+        const xxlLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%96%B0%E8%A5%BF%E5%85%B0/MapServer",
+          id: "xxl",
+          visible: false
+        });
+        const ymLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E4%B9%9F%E9%97%A8/MapServer",
+          id: "ym",
+          visible: false
+        });
+        const ydLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%8D%B0%E5%BA%A6/MapServer",
+          id: "yd",
+          visible: false
+        });
+        const ydnxyLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E5%8D%B0%E5%BA%A6%E5%B0%BC%E8%A5%BF%E4%BA%9A/MapServer",
+          id: "ydnxy",
+          visible: false
+        });
+        const ygLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%8B%B1%E5%9B%BD/MapServer",
+          id: "yg",
+          visible: false
+        });
+        const ynLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E8%B6%8A%E5%8D%97/MapServer",
+          id: "yn",
+          visible: false
+        });
+        const zlLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E6%99%BA%E5%88%A9/MapServer",
+          id: "zl",
+          visible: false
+        });
+        const zgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BD%E5%88%AB/%E4%B8%AD%E5%9B%BD/MapServer",
+          id: "zg",
+          visible: false
+        });
+
+        const communityLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%A4%96%E5%A4%A7%E9%99%86%E6%9E%B6/%E5%A7%94%E5%91%98%E4%BC%9A%E5%BB%BA%E8%AE%AE%E5%A4%96%E9%83%A8%E8%BE%B9%E7%95%8C/MapServer",
+          id: "community",
+          visible: false
+        });
+        const adviseLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%A4%96%E5%A4%A7%E9%99%86%E6%9E%B6/%E5%A7%94%E5%91%98%E4%BC%9A%E5%BB%BA%E8%AE%AE%E5%A4%9A%E8%BE%B9%E5%BD%A2/MapServer",
+          id: "advise",
+          visible: false
+        });
+        const unadviseLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%A4%96%E5%A4%A7%E9%99%86%E6%9E%B6/%E5%A7%94%E5%91%98%E4%BC%9A%E6%9C%AA%E8%AE%A4%E5%8F%AF%E5%A4%9A%E8%BE%B9%E5%BD%A2/MapServer",
+          id: "unadvise",
+          visible: false
+        });
+        const outsideLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%A4%96%E5%A4%A7%E9%99%86%E6%9E%B6/%E5%90%84%E5%9B%BD%E4%B8%BB%E5%BC%A0%E5%A4%96%E9%83%A8%E8%BE%B9%E7%95%8C/MapServer",
+          id: "outside",
+          visible: false
+        });
+        
+        const countryadviseLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%A4%96%E5%A4%A7%E9%99%86%E6%9E%B6/%E5%90%84%E5%9B%BD%E4%B8%BB%E5%BC%A0%E5%A4%9A%E8%BE%B9%E5%BD%A2/MapServer",
+          id: "countryadvise",
+          visible: false
+        });
+        const sea2Layer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BE%E5%B1%82/%E4%B8%96%E7%95%8C%E4%B8%BB%E8%A6%81%E6%B5%B7%E6%B4%8B%E8%BE%B9%E7%95%8C/MapServer",
+          id: "sea2",
+          visible: false
+        });
+        const sea3Layer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%9B%BE%E5%B1%82/%E4%B8%96%E7%95%8C%E5%A4%A7%E6%B4%8B%E5%88%86%E7%95%8C%E7%BA%BF/MapServer",
+          id: "sea3",
+          visible: false
+        });
+        
+
+        const bsdwmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E5%8D%8A%E7%B4%A2%E5%8A%A8%E7%89%A9%E9%97%A8/MapServer",
+          id: "bsdwm",
+          visible: false
+        });
+        const dmgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E5%A4%9A%E6%AF%9B%E7%BA%B2/MapServer",
+          id: "dmg",
+          visible: false
+        });
+        const wsdwymLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E5%8D%8A%E7%B4%A2%E5%8A%A8%E7%89%A9%E9%97%A8/MapServer",
+          id: "wsdwym",
+          visible: false
+        });
+        const medwmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%AF%9B%E9%A2%9A%E5%8A%A8%E7%89%A9%E9%97%A8/MapServer",
+          id: "medwm",
+          visible: false
+        });
+        const hsgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%B5%B7%E5%8F%82%E7%BA%B2/MapServer",
+          id: "hsg",
+          visible: false
+        });
+        const hxgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%B5%B7%E6%98%9F%E7%BA%B2/MapServer",
+          id: "hxg",
+          visible: false
+        });
+        const hnmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%B5%B7%E7%89%9B%E7%9B%AE/MapServer",
+          id: "hnm",
+          visible: false
+        });
+        const hbhgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%B5%B7%E7%99%BE%E5%90%88%E7%BA%B2/MapServer",
+          id: "hbhg",
+          visible: false
+        });
+        const hmdwmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%B5%B7%E7%BB%B5%E5%8A%A8%E7%89%A9%E9%97%A8/MapServer",
+          id: "hmdwm",
+          visible: false
+        });
+        const hdgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%B5%B7%E8%83%86%E7%BA%B2/MapServer",
+          id: "hdg",
+          visible: false
+        });
+        const hzzgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E6%B5%B7%E8%9C%98%E8%9B%9B%E7%BA%B2/MapServer",
+          id: "hzzg",
+          visible: false
+        });
+        const shgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E7%8F%8A%E7%91%9A%E7%BA%B2/MapServer",
+          id: "shg",
+          visible: false
+        });
+        const swdlfbLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E7%94%9F%E7%89%A9%E5%9C%B0%E7%90%86%E5%88%86%E5%B8%83/MapServer",
+          id: "swdlfb",
+          visible: false
+        });
+        const wzdwmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E8%85%95%E8%B6%B3%E5%8A%A8%E7%89%A9%E9%97%A8/MapServer",
+          id: "wzdwm",
+          visible: false
+        });
+        const swgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E8%9B%87%E5%B0%BE%E7%BA%B2/MapServer",
+          id: "swg",
+          visible: false
+        });
+        const rjgLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E8%BD%AF%E7%94%B2%E7%BA%B2/MapServer",
+          id: "rjg",
+          visible: false
+        });
+        const xwdwmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E9%A1%BB%E8%85%95%E5%8A%A8%E7%89%A9%E9%97%A8/MapServer",
+          id: "xwdwm",
+          visible: false
+        });
+        const jxmLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E9%B2%B8%E4%B8%8B%E7%9B%AE/MapServer",
+          id: "jxm",
+          visible: false
+        });
+
+        const animalLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E7%94%9F%E7%89%A9/%E7%94%9F%E7%89%A9%E5%9C%B0%E7%90%86%E5%88%86%E5%B8%83/MapServer",
+          id: "animal",
+          visible: false
+        });
+        
+        const wdpaLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/WDPA/wdpa/MapServer",
+          id: "wdpa",
+          visible: false
+        });
+        const WDPA_PointLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/WDPA/WDPAPoint/MapServer",
+          id: "wdpa",
+          visible: false
+        });
+        const WDOECMLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/WDPA/WDOECM/MapServer",
+          id: "wdoecm",
+          visible: false
+        });
+
+        const VMELayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/VME/MapServer",
+          id: "vme",
+          visible: false
+        });
+        const BTMLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/btm/MapServer",
+          id: "btm",
+          visible: false
+        });
+        const OTHERLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/other/MapServer",
+          id: "other",
+          visible: false
+        });
+        const PSSALayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/pssa/MapServer",
+          id: "pssa",
+          visible: false
+        });
+        const GPI3030Layer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/gpi3030/MapServer",
+          id: "pssa",
+          visible: false
+        });
+        const APEILayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/apei/MapServer",
+          id: "apei",
+          visible: false
+        });
+        const fishLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/%E9%B2%B8%E9%B1%BC/MapServer",
+          id: "fish",
+          visible: false
+        });
+        const SLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/%E5%8D%97%E6%9E%81/MapServer",
+          id: "s",
+          visible: false
+        });
+        const FaoLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/fao/MapServer",
+          id: "fao",
+          visible: false
+        });
+        const GuanLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/VME/%E6%B8%94%E4%B8%9A/MapServer",
+          id: "guan",
+          visible: false
+        });
+        const ebsasLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/具有重要生态意义/ebsas/MapServer",
+          id: "ebsas",
+          visible: false
+        });
+        const IMMALayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%85%B7%E6%9C%89%E9%87%8D%E8%A6%81%E7%94%9F%E6%80%81%E6%84%8F%E4%B9%89/imma/MapServer",
+          id: "imma",
+          visible: false
+        });
+        const IBAs_pntLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%85%B7%E6%9C%89%E9%87%8D%E8%A6%81%E7%94%9F%E6%80%81%E6%84%8F%E4%B9%89/pnt/MapServer",
+          id: "IBAs_pnt",
+          visible: false
+        });
+        const IBAs_polLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%85%B7%E6%9C%89%E9%87%8D%E8%A6%81%E7%94%9F%E6%80%81%E6%84%8F%E4%B9%89/pol/MapServer",
+          id: "IBAs_pol",
+          visible: false
+        });
+        const KBASs_pntLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%85%B7%E6%9C%89%E9%87%8D%E8%A6%81%E7%94%9F%E6%80%81%E6%84%8F%E4%B9%89/kbaspnt/MapServer",
+          id: "KBASs_pnt",
+          visible: false
+        });
+        const KBASs_polLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%85%B7%E6%9C%89%E9%87%8D%E8%A6%81%E7%94%9F%E6%80%81%E6%84%8F%E4%B9%89/kbaspol/MapServer",
+          id: "KBASs_pol",
+          visible: false
+        });
+        const paphsLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E5%85%B7%E6%9C%89%E9%87%8D%E8%A6%81%E7%94%9F%E6%80%81%E6%84%8F%E4%B9%89/paphs/MapServer",
+          id: "paphs",
+          visible: false
+        });
+
+        const duo1Layer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E6%B5%B7%E6%B4%8B%E7%A9%BA%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90/%E5%A4%9A%E9%87%91%E5%8E%98%E7%BB%93%E6%A0%B8%E7%9F%BF%E5%8C%BA/MapServer",
+          id: "duo1",
+          visible: false
+        });
+        const fuLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E6%B5%B7%E6%B4%8B%E7%A9%BA%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90/%E5%AF%8C%E9%92%B4%E7%BB%93%E6%A0%B8%E7%9F%BF%E5%8C%BA/MapServer",
+          id: "fu",
+          visible: false
+        });
+        const duo2Layer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E6%B5%B7%E6%B4%8B%E7%A9%BA%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90/%E5%A4%9A%E9%87%91%E5%B1%9E%E7%A1%AB%E5%8C%96%E7%89%A9/MapServer",
+          id: "duo2",
+          visible: false
+        });
+        const zhongLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E6%B5%B7%E6%B4%8B%E7%A9%BA%E9%97%B4%E5%8F%8A%E8%B5%84%E6%BA%90/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E5%8C%BA/MapServer",
+          id: "zhong",
+          visible: false
+        });
+
+        const yanhaiLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E6%B5%B7%E6%B4%8B%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/%E6%B2%BF%E6%B5%B7%E5%9B%BD%E5%AE%B6/MapServer",
+          id: "yanhai",
+          visible: false
+        });
+
+        const meiguoLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E6%B5%B7%E6%B4%8B%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/%E6%B5%B7%E5%A4%96%E5%86%9B%E4%BA%8B%E5%9F%BA%E5%9C%B0%E7%BE%8E%E5%9B%BD/MapServer",
+          id: "meiguo",
+          visible: false
+        });
+        const mainLayer = new FeatureLayer({
+          url: "https://localhost:6443/arcgis/rest/services/%E6%B5%B7%E6%B4%8B%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/%E4%B8%96%E7%95%8C%E4%B8%BB%E8%A6%81%E6%B8%AF%E5%8F%A3/MapServer",
+          id: "main",
+          visible: false
+        });
+
+        
+        
+
+        
+        const map = new Map({
+          basemap: "topo-vector",
+          layers: [ seaLayer,transportationLayer,nearLayer, economicLayer,
+          agtLayer,amLayer,aelLayer,aglLayer,adlyLayer,bbdsLayer,bhmLayer,bjstLayer,bxLayer,bdLayer,dmLayer,elsLayer,
+          fgLayer,flbLayer,fjLayer,gbLayer,gynLayer,hgLayer,jlbsLayer,jndLayer,jnLayer,jpLayer,ktdwLayer,knyLayer,kkqdLayer,
+          lblyLayer,mdjsjLayer,medfLayer,mlxyLayer,mlqsLayer,mjlgLayer,mklnxyLayer,mdLayer,msbkLayer,mxgLayer,nmbyLayer,nfLayer,
+          njlgLayer,nrlyLayer,nwLayer,msbkLayer,mxgLayer,nmbyLayer,nfLayer,njlgLayer,nrlyLayer,nwLayer,plLayer,ptyLayer,rbLayer,
+          sseLayer,sllkLayer,slnLayer,smlLayer,tsnyLayer,tjLayer,tlndydbgLayer,wlgLayer,xbyLayer,xxlLayer,ymLayer,ydLayer,ydnxyLayer,
+          ygLayer,ynLayer,zlLayer,zgLayer,
+          communityLayer,adviseLayer,unadviseLayer,outsideLayer,countryadviseLayer,sea2Layer,sea3Layer,animalLayer,
+          bsdwmLayer,dmgLayer,wsdwymLayer,medwmLayer,hsgLayer,hxgLayer,hnmLayer,hbhgLayer,hmdwmLayer,hdgLayer,hzzgLayer,shgLayer,wzdwmLayer,swgLayer,rjgLayer,xwdwmLayer,jxmLayer,
+          wdpaLayer,WDPA_PointLayer,WDOECMLayer,VMELayer,BTMLayer,OTHERLayer,PSSALayer,GPI3030Layer,
+          APEILayer,fishLayer,SLayer,FaoLayer,GuanLayer,ebsasLayer,IMMALayer,IBAs_pntLayer,IBAs_polLayer,
+          KBASs_pntLayer,KBASs_polLayer,paphsLayer,duo1Layer,fuLayer,duo2Layer,zhongLayer,yanhaiLayer,meiguoLayer,mainLayer]
+        });
+        // map1Layer,
+        const view = new MapView({
+          container: "viewDiv",
+          map: map,
+          zoom: 4,
+          center: [180, 40],
+
+        });
+        // //显示当前图层
+        // const layerList = new LayerList({ view: view });
+        // view.ui.add(layerList, "bottom-left");
+
+        // **新增搜索组件**
+        const searchWidget = new Search({
+          view: view // 将搜索组件绑定到当前的 MapView
+        });
+      
+        // 将搜索组件添加到左上角
+        view.ui.add(searchWidget, {
+          position: "top-right"
+        });
+        
+
+        // // 侧边栏按钮事件绑定
+        // const toggleMap1 =  document.getElementById("toggleMap1");
+        const toggleStreets = document.getElementById("toggleStreets");
+        const toggleSea = document.getElementById("toggleSea");
+        const toggleNear = document.getElementById("toggleNear");
+        const toggleEconomic = document.getElementById("toggleEconomic");
+
+
+        const toggleAgt = document.getElementById("toggleAgt");
+        const toggleAm = document.getElementById("toggleAm");
+        const toggleAel = document.getElementById("toggleAel");
+        const toggleAgl = document.getElementById("toggleAgl");
+        const toggleAdly = document.getElementById("toggleAdly");
+        const toggleBbds = document.getElementById("toggleBbds");
+        const toggleBhm = document.getElementById("toggleBhm");
+        const toggleBjst = document.getElementById("toggleBjst");
+        const toggleBx = document.getElementById("toggleBx");
+        const toggleBd = document.getElementById("toggleBd");
+        const toggleDm = document.getElementById("toggleDm");
+        const toggleEls = document.getElementById("toggleEls");
+        const toggleFg = document.getElementById("toggleFg");
+        const toggleFlb = document.getElementById("toggleFlb");
+        const toggleFj = document.getElementById("toggleFj");
+        const toggleGb = document.getElementById("toggleGb");
+        const toggleGyn = document.getElementById("toggleGyn");
+        const toggleHg = document.getElementById("toggleHg");
+        const toggleJlbs = document.getElementById("toggleJlbs");
+        const toggleJnd = document.getElementById("toggleJnd");
+        const toggleJn = document.getElementById("toggleJn");
+        const toggleJp = document.getElementById("toggleJp");
+        const toggleKtdw = document.getElementById("toggleKtdw");
+        const toggleKny = document.getElementById("toggleKny");
+        const toggleKkqd = document.getElementById("toggleKkqd");
+        const toggleLbly = document.getElementById("toggleLbly");
+        const toggleMdjsj = document.getElementById("toggleMdjsj");
+        const toggleMedf = document.getElementById("toggleMedf");
+        const toggleMlxy = document.getElementById("toggleMlxy");
+        const toggleMlqs = document.getElementById("toggleMlqs");
+        const toggleMjlg = document.getElementById("toggleMjlg");
+        const toggleMklnxy = document.getElementById("toggleMklnxy");
+        const toggleMd = document.getElementById("toggleMd");
+        const toggleMsbk = document.getElementById("toggleMsbk");
+        const toggleMxg = document.getElementById("toggleMxg");
+        const toggleNmby = document.getElementById("toggleNmby");
+        const toggleNf = document.getElementById("toggleNf");
+        const toggleNjlg = document.getElementById("toggleNjlg");
+        const toggleNrly = document.getElementById("toggleNrly");
+        const toggleNw = document.getElementById("toggleNw");
+        const togglePl = document.getElementById("togglePl");
+        const togglePty = document.getElementById("togglePty");
+        const toggleRb = document.getElementById("toggleRb");
+        const toggleSse = document.getElementById("toggleSse");
+        const toggleSllk = document.getElementById("toggleSllk");
+        const toggleSln = document.getElementById("toggleSln");
+        const toggleSml = document.getElementById("toggleSml");
+        const toggleTsny = document.getElementById("toggleTsny");
+        const toggleTj = document.getElementById("toggleTj");
+        const toggleTlndydbg = document.getElementById("toggleTlndydbg");
+        const toggleWlg = document.getElementById("toggleWlg");
+        const toggleXby = document.getElementById("toggleXby");
+        const toggleXxl = document.getElementById("toggleXxl");
+        const toggleYm = document.getElementById("toggleYm");
+        const toggleYd = document.getElementById("toggleYd");
+        const toggleYdnxy = document.getElementById("toggleYdnxy");
+        const toggleYg = document.getElementById("toggleYg");
+        const toggleYn = document.getElementById("toggleYn");
+        const toggleZl = document.getElementById("toggleZl");
+        const toggleZg = document.getElementById("toggleZg");
+
+        
+        const toggleCommunity = document.getElementById("toggleCommunity");
+        const toggleAdvise =  document.getElementById("toggleAdvise");
+        const toggleUnAdvise =  document.getElementById("toggleUnAdvise");
+        const toggleOutside =  document.getElementById("toggleOutside");
+        const toggleCountryAdvise =  document.getElementById("toggleCountryAdvise");
+        
+        const toggleSea2 =  document.getElementById("toggleSea2");
+        const toggleSea3 =  document.getElementById("toggleSea3");
+        
+        const toggleBsdwm =  document.getElementById("toggleBsdwm");
+        const toggleDmg =  document.getElementById("toggleDmg");
+        const toggleWsdwym =  document.getElementById("toggleWsdwym");
+        const toggleMedwm =  document.getElementById("toggleMedwm");
+        const toggleHsg =  document.getElementById("toggleHsg");
+        const toggleHxg =  document.getElementById("toggleHxg");
+        const toggleHnm =  document.getElementById("toggleHnm");
+        const toggleHbhg =  document.getElementById("toggleHbhg");
+        const toggleHmdwm =  document.getElementById("toggleHmdwm");
+        const toggleHdg =  document.getElementById("toggleHdg");
+        const toggleHzzg =  document.getElementById("toggleHzzg");
+        const toggleShg =  document.getElementById("toggleShg");
+        const toggleSwdlfb =  document.getElementById("toggleSwdlfb");
+        const toggleWzdwm =  document.getElementById("toggleWzdwm");
+        const toggleSwg =  document.getElementById("toggleSwg");
+        const toggleRjg =  document.getElementById("toggleRjg");
+        const toggleXwdwm =  document.getElementById("toggleXwdwm");
+        const toggleJxm =  document.getElementById("toggleJxm");
+
+
+        const toggleAnimal =  document.getElementById("toggleAnimal");
+
+        const toggleWdpa =  document.getElementById("toggleWdpa");
+        const toggleWdpa_point =  document.getElementById("toggleWdpa_point");
+        const toggleWdoecm =  document.getElementById("toggleWdoecm"); 
+
+        const toggleVme =  document.getElementById("toggleVme"); 
+        const toggleBtm =  document.getElementById("toggleBtm"); 
+        const toggleOther =  document.getElementById("toggleOther"); 
+        const togglePssa =  document.getElementById("togglePssa"); 
+        const toggleGpi3030 =  document.getElementById("toggleGpi3030"); 
+        const toggleApei =  document.getElementById("toggleApei");
+        const toggleFish =  document.getElementById("toggleFish");
+        const toggleS =  document.getElementById("toggleS");
+        const toggleFao =  document.getElementById("toggleFao");
+        const toggleGuan =  document.getElementById("toggleGuan");
+
+        const toggleEbsas =  document.getElementById("toggleEbsas");
+        const toggleIMMA =  document.getElementById("toggleIMMA");
+        const toggleIbaspnt =  document.getElementById("toggleIbaspnt");
+        const toggleIbaspol =  document.getElementById("toggleIbaspol");
+        const togglekbaspnt =  document.getElementById("togglekbaspnt");
+        const togglekbaspol =  document.getElementById("togglekbaspol");
+        const togglepaphs =  document.getElementById("togglepaphs");
+
+        const toggleduo1 =  document.getElementById("toggleduo1");
+        const togglefu =  document.getElementById("togglefu");
+        const toggleduo2 =  document.getElementById("toggleduo2");
+        const togglezhong =  document.getElementById("togglezhong");
+
+        const toggleyanhai =  document.getElementById("toggleyanhai");
+        const togglemeiguo =  document.getElementById("togglemeiguo");
+        const togglemain =  document.getElementById("togglemain");
+
+        // toggleMap1.addEventListener("click", () => {
+        //   map1Layer.visible = !map1Layer.visible;
+        //   toggleMap1.classList.toggle("active", map1Layer.visible);
+        // });
+        toggleStreets.addEventListener("click", () => {
+          transportationLayer.visible = !transportationLayer.visible;
+          toggleStreets.classList.toggle("active", transportationLayer.visible);
+        });
+
+        toggleSea.addEventListener("click", () => {
+          seaLayer.visible = !seaLayer.visible;
+          toggleSea.classList.toggle("active", seaLayer.visible);
+        });
+        toggleNear.addEventListener("click", () => {
+          nearLayer.visible = !nearLayer.visible;
+          toggleSea.classList.toggle("active", nearLayer.visible);
+        });
+        toggleEconomic.addEventListener("click", () => {
+          economicLayer.visible = !economicLayer.visible;
+          toggleEconomic.classList.toggle("active", economicLayer.visible);
+        });
+
+
+
+
+        toggleAgt.addEventListener("click", () => {
+          agtLayer.visible = !agtLayer.visible;
+          toggleAgt.classList.toggle("active", agtLayer.visible);
+        });
+        toggleAm.addEventListener("click", () => {
+          amLayer.visible = !amLayer.visible;
+          toggleAm.classList.toggle("active", amLayer.visible);
+        });
+        toggleAel.addEventListener("click", () => {
+          aelLayer.visible = !aelLayer.visible;
+          toggleAel.classList.toggle("active", aelLayer.visible);
+        });
+        toggleAgl.addEventListener("click", () => {
+          aglLayer.visible = !aglLayer.visible;
+          toggleAgl.classList.toggle("active", aglLayer.visible);
+        });
+        toggleAdly.addEventListener("click", () => {
+          adlyLayer.visible = !adlyLayer.visible;
+          toggleAdly.classList.toggle("active", adlyLayer.visible);
+        });
+        toggleBbds.addEventListener("click", () => {
+          bbdsLayer.visible = !bbdsLayer.visible;
+          toggleBbds.classList.toggle("active", bbdsLayer.visible);
+        });
+        toggleBhm.addEventListener("click", () => {
+          bhmLayer.visible = !bhmLayer.visible;
+          toggleBhm.classList.toggle("active", bhmLayer.visible);
+        });
+        toggleBjst.addEventListener("click", () => {
+          bjstLayer.visible = !bjstLayer.visible;
+          toggleBjst.classList.toggle("active", bjstLayer.visible);
+        });
+        toggleBx.addEventListener("click", () => {
+          bxLayer.visible = !bxLayer.visible;
+          toggleBx.classList.toggle("active", bxLayer.visible);
+        });
+        toggleBd.addEventListener("click", () => {
+          economicBd.visible = !bdLayer.visible;
+          toggleBd.classList.toggle("active", bdLayer.visible);
+        });
+        toggleDm.addEventListener("click", () => {
+          dmLayer.visible = !dmLayer.visible;
+          toggleDm.classList.toggle("active", dmLayer.visible);
+        });
+        toggleEls.addEventListener("click", () => {
+          elsLayer.visible = !elsLayer.visible;
+          toggleEls.classList.toggle("active", elsLayer.visible);
+        });
+        toggleFg.addEventListener("click", () => {
+          fgLayer.visible = !fgLayer.visible;
+          toggleFg.classList.toggle("active", fgLayer.visible);
+        });
+        toggleFlb.addEventListener("click", () => {
+          flbLayer.visible = !flbLayer.visible;
+          toggleFlb.classList.toggle("active", flbLayer.visible);
+        });
+        toggleFj.addEventListener("click", () => {
+          fjLayer.visible = !fjLayer.visible;
+          toggleFj.classList.toggle("active", fjLayer.visible);
+        });
+        toggleGb.addEventListener("click", () => {
+          gbLayer.visible = !gbLayer.visible;
+          toggleGb.classList.toggle("active", gbLayer.visible);
+        });
+        toggleGyn.addEventListener("click", () => {
+          gynLayer.visible = !gynLayer.visible;
+          toggleGyn.classList.toggle("active", gynLayer.visible);
+        });
+        toggleHg.addEventListener("click", () => {
+          hgLayer.visible = !hgLayer.visible;
+          toggleHg.classList.toggle("active", hgLayer.visible);
+        });
+        toggleJlbs.addEventListener("click", () => {
+          jlbsLayer.visible = !jlbsLayer.visible;
+          toggleJlbs.classList.toggle("active", jlbsLayer.visible);
+        });
+        toggleJnd.addEventListener("click", () => {
+          jndLayer.visible = !jndLayer.visible;
+          toggleJnd.classList.toggle("active", jndLayer.visible);
+        });
+        toggleJn.addEventListener("click", () => {
+          jnLayer.visible = !jnLayer.visible;
+          toggleJn.classList.toggle("active", jnLayer.visible);
+        });
+        toggleKtdw.addEventListener("click", () => {
+          ktdwLayer.visible = !ktdwLayer.visible;
+          toggleKtdw.classList.toggle("active", ktdwLayer.visible);
+        });
+        toggleKny.addEventListener("click", () => {
+          knyLayer.visible = !knyLayer.visible;
+          toggleKny.classList.toggle("active", knyLayer.visible);
+        });
+        toggleKkqd.addEventListener("click", () => {
+          kkqdLayer.visible = !kkqdLayer.visible;
+          toggleKkqd.classList.toggle("active", kkqdLayer.visible);
+        });
+        toggleLbly.addEventListener("click", () => {
+          lblyLayer.visible = !lblyLayer.visible;
+          toggleLbly.classList.toggle("active", lblyLayer.visible);
+        });
+        toggleMdjsj.addEventListener("click", () => {
+          mdjsjLayer.visible = !mdjsjLayer.visible;
+          toggleMdjsj.classList.toggle("active", mdjsjLayer.visible);
+        });
+        toggleMedf.addEventListener("click", () => {
+          medfLayer.visible = !medfLayer.visible;
+          toggleMedf.classList.toggle("active", medfLayer.visible);
+        });
+        toggleMlxy.addEventListener("click", () => {
+          mlxyLayer.visible = !mlxyLayer.visible;
+          toggleMlxy.classList.toggle("active", mlxyLayer.visible);
+        });
+        toggleMlqs.addEventListener("click", () => {
+          mlqsLayer.visible = !mlqsLayer.visible;
+          toggleMlqs.classList.toggle("active", mlqsLayer.visible);
+        });
+        toggleMjlg.addEventListener("click", () => {
+          mjlgLayer.visible = !mjlgLayer.visible;
+          toggleMjlg.classList.toggle("active", mjlgLayer.visible);
+        });
+
+
+
+
+
+        toggleMklnxy.addEventListener("click", () => {
+          mklnxyLayer.visible = !mklnxyLayer.visible;
+          toggleMklnxy.classList.toggle("active", mklnxyLayer.visible);
+        });
+        toggleMd.addEventListener("click", () => {
+          mdLayer.visible = !mdLayer.visible;
+          toggleMd.classList.toggle("active", mdLayer.visible);
+        });
+        toggleMsbk.addEventListener("click", () => {
+          msbkLayer.visible = !msbkLayer.visible;
+          toggleMsbk.classList.toggle("active", msbkLayer.visible);
+        });
+        toggleMxg.addEventListener("click", () => {
+          mxgLayer.visible = !mxgLayer.visible;
+          toggleMxg.classList.toggle("active", mxgLayer.visible);
+        });
+        toggleNmby.addEventListener("click", () => {
+          nmbyLayer.visible = !nmbyLayer.visible;
+          toggleNmby.classList.toggle("active", nmbyLayer.visible);
+        });
+        toggleNf.addEventListener("click", () => {
+          nfLayer.visible = !nfLayer.visible;
+          toggleNf.classList.toggle("active", nfLayer.visible);
+        });
+        toggleNrly.addEventListener("click", () => {
+          nrlyLayer.visible = !nrlyLayer.visible;
+          toggleNrly.classList.toggle("active", nrlyLayer.visible);
+        });
+        toggleNw.addEventListener("click", () => {
+          nwLayer.visible = !nwLayer.visible;
+          toggleNw.classList.toggle("active", nwLayer.visible);
+        });
+        togglePl.addEventListener("click", () => {
+          plLayer.visible = !plLayer.visible;
+          togglePl.classList.toggle("active", plLayer.visible);
+        });
+        togglePty.addEventListener("click", () => {
+          ptyLayer.visible = !ptyLayer.visible;
+          togglePty.classList.toggle("active", ptyLayer.visible);
+        });
+        toggleRb.addEventListener("click", () => {
+          rbLayer.visible = !rbLayer.visible;
+          toggleRb.classList.toggle("active", rbLayer.visible);
+        });
+        toggleSse.addEventListener("click", () => {
+          sseLayer.visible = !sseLayer.visible;
+          toggleSse.classList.toggle("active", sseLayer.visible);
+        });
+        toggleSllk.addEventListener("click", () => {
+          sllkLayer.visible = !sllkLayer.visible;
+          toggleSllk.classList.toggle("active", sllkLayer.visible);
+        });
+        toggleSln.addEventListener("click", () => {
+          slnLayer.visible = !slnLayer.visible;
+          toggleSln.classList.toggle("active", slnLayer.visible);
+        });
+        toggleSml.addEventListener("click", () => {
+          smlLayer.visible = !smlLayer.visible;
+          toggleSml.classList.toggle("active", smlLayer.visible);
+        });
+        toggleTsny.addEventListener("click", () => {
+          tsnyLayer.visible = !tsnyLayer.visible;
+          toggleTsny.classList.toggle("active", tsnyLayer.visible);
+        });
+        toggleTj.addEventListener("click", () => {
+          tjLayer.visible = !tjLayer.visible;
+          toggleTj.classList.toggle("active", tjLayer.visible);
+        });
+        toggleTlndydbg.addEventListener("click", () => {
+          tlndydbgLayer.visible = !tlndydbgLayer.visible;
+          toggleTlndydbg.classList.toggle("active", tlndydbgLayer.visible);
+        });
+        toggleWlg.addEventListener("click", () => {
+          wlgLayer.visible = !wlgLayer.visible;
+          toggleWlg.classList.toggle("active", wlgLayer.visible);
+        });
+        toggleXby.addEventListener("click", () => {
+          xbyLayer.visible = !xbyLayer.visible;
+          toggleXby.classList.toggle("active", xbyLayer.visible);
+        });
+        toggleXxl.addEventListener("click", () => {
+          xxlLayer.visible = !xxlLayer.visible;
+          toggleXxl.classList.toggle("active", xxlLayer.visible);
+        });
+        toggleYm.addEventListener("click", () => {
+          ymLayer.visible = !ymLayer.visible;
+          toggleYm.classList.toggle("active", ymLayer.visible);
+        });
+        toggleYd.addEventListener("click", () => {
+          ydLayer.visible = !ydLayer.visible;
+          toggleYd.classList.toggle("active", ydLayer.visible);
+        });
+        toggleYdnxy.addEventListener("click", () => {
+          ydnxyLayer.visible = !ydnxyLayer.visible;
+          toggleYdnxy.classList.toggle("active", ydnxyLayer.visible);
+        });
+        toggleYg.addEventListener("click", () => {
+          ygLayer.visible = !ygLayer.visible;
+          toggleYg.classList.toggle("active", ygLayer.visible);
+        });
+        toggleYn.addEventListener("click", () => {
+          ynLayer.visible = !ynLayer.visible;
+          toggleYn.classList.toggle("active", ynLayer.visible);
+        });
+        toggleZl.addEventListener("click", () => {
+          zlLayer.visible = !zlLayer.visible;
+          toggleZl.classList.toggle("active", zlLayer.visible);
+        });
+        toggleZg.addEventListener("click", () => {
+          zgLayer.visible = !zgLayer.visible;
+          toggleZg.classList.toggle("active", zgLayer.visible);
+        });
+       
+        toggleCommunity.addEventListener("click", () => {
+          communityLayer.visible = !communityLayer.visible;
+          toggleCommunity.classList.toggle("active", communityLayer.visible);
+        });
+        toggleAdvise.addEventListener("click", () => {
+          adviseLayer.visible = !adviseLayer.visible;
+          toggleAdvise.classList.toggle("active", adviseLayer.visible);
+        });
+        toggleUnAdvise.addEventListener("click", () => {
+          unadviseLayer.visible = !unadviseLayer.visible;
+          toggleUnAdvise.classList.toggle("active", unadviseLayer.visible);
+        });
+        toggleOutside.addEventListener("click", () => {
+          outsideLayer.visible = !outsideLayer.visible;
+          toggleOutside.classList.toggle("active", outsideLayer.visible);
+        });
+        toggleCountryAdvise.addEventListener("click", () => {
+          countryadviseLayer.visible = !countryadviseLayer.visible;
+          toggleCountryAdvise.classList.toggle("active", countryadviseLayer.visible);
+        });
+        toggleSea2.addEventListener("click", () => {
+          sea2Layer.visible = !sea2Layer.visible;
+          toggleSea2.classList.toggle("active", sea2Layer.visible);
+        });
+        toggleSea3.addEventListener("click", () => {
+          sea3Layer.visible = !sea3Layer.visible;
+          toggleSea3.classList.toggle("active", sea3Layer.visible);
+        });
+        
+        toggleBsdwm.addEventListener("click", () => {
+          bsdwmLayer.visible = !bsdwmLayer.visible;
+          toggleBsdwm.classList.toggle("active", bsdwmLayer.visible);
+        });
+        toggleDmg.addEventListener("click", () => {
+          dmgLayer.visible = !dmgLayer.visible;
+          toggleDmg.classList.toggle("active", dmgLayer.visible);
+        });
+        toggleWsdwym.addEventListener("click", () => {
+          wsdwymLayer.visible = !wsdwymLayer.visible;
+          toggleWsdwym.classList.toggle("active", wsdwymLayer.visible);
+        });
+        toggleMedwm.addEventListener("click", () => {
+          medwmLayer.visible = !medwmLayer.visible;
+          toggleMedwm.classList.toggle("active", medwmLayer.visible);
+        });
+        toggleHsg.addEventListener("click", () => {
+          hsgLayer.visible = !hsgLayer.visible;
+          toggleHsg.classList.toggle("active", hsgLayer.visible);
+        });
+        toggleHxg.addEventListener("click", () => {
+          hxgLayer.visible = !hxgLayer.visible;
+          toggleHxg.classList.toggle("active", hxgLayer.visible);
+        });
+        toggleHnm.addEventListener("click", () => {
+          hnmLayer.visible = !hnmLayer.visible;
+          toggleHnm.classList.toggle("active", hnmLayer.visible);
+        });
+        toggleHbhg.addEventListener("click", () => {
+          hbhgLayer.visible = !hbhgLayer.visible;
+          toggleHbhg.classList.toggle("active", hbhgLayer.visible);
+        });
+        toggleHmdwm.addEventListener("click", () => {
+          hmdwmLayer.visible = !hmdwmLayer.visible;
+          toggleHmdwm.classList.toggle("active", hmdwmLayer.visible);
+        });
+        toggleHdg.addEventListener("click", () => {
+          hdgLayer.visible = !hdgLayer.visible;
+          toggleHdg.classList.toggle("active", hdgLayer.visible);
+        });
+        toggleHzzg.addEventListener("click", () => {
+          hzzgLayer.visible = !hzzgLayer.visible;
+          toggleHzzg.classList.toggle("active", hzzgLayer.visible);
+        });
+        toggleShg.addEventListener("click", () => {
+          shgLayer.visible = !shgLayer.visible;
+          toggleShg.classList.toggle("active", shgLayer.visible);
+        });
+        toggleWzdwm.addEventListener("click", () => {
+          wzdwmLayer.visible = !wzdwmLayer.visible;
+          toggleWzdwm.classList.toggle("active", wzdwmLayer.visible);
+        });
+        toggleSwg.addEventListener("click", () => {
+          swgLayer.visible = !swgLayer.visible;
+          toggleSwg.classList.toggle("active", swgLayer.visible);
+        });
+        toggleRjg.addEventListener("click", () => {
+          rjgLayer.visible = !rjgLayer.visible;
+          toggleRjg.classList.toggle("active", rjgLayer.visible);
+        });
+        toggleXwdwm.addEventListener("click", () => {
+          xwdwmLayer.visible = !xwdwmLayer.visible;
+          toggleXwdwm.classList.toggle("active", xwdwmLayer.visible);
+        });
+        toggleJxm.addEventListener("click", () => {
+          jxmLayer.visible = !jxmLayer.visible;
+          toggleJxm.classList.toggle("active", jxmLayer.visible);
+        });
+
+        toggleAnimal.addEventListener("click", () => {
+          animalLayer.visible = !animalLayer.visible;
+          toggleAnimal.classList.toggle("active", animalLayer.visible);
+        });
+        toggleWdpa.addEventListener("click", () => {
+          wdpaLayer.visible = !wdpaLayer.visible;
+          toggleWdpa.classList.toggle("active", wdpaLayer.visible);
+        });
+        toggleWdpa_point.addEventListener("click", () => {
+          WDPA_PointLayer.visible = !WDPA_PointLayer.visible;
+          toggleWdpa_point.classList.toggle("active", WDPA_PointLayer.visible);
+        });
+        toggleWdoecm.addEventListener("click", () => {
+          WDOECMLayer.visible = !WDOECMLayer.visible;
+          toggleWdoecm.classList.toggle("active", WDOECMLayer.visible);
+        });
+
+        toggleVme.addEventListener("click", () => {
+          VMELayer.visible = !VMELayer.visible;
+          toggleVme.classList.toggle("active", VMELayer.visible);
+        });
+        toggleBtm.addEventListener("click", () => {
+          BTMLayer.visible = !BTMLayer.visible;
+          toggleVme.classList.toggle("active", BTMLayer.visible);
+        });
+        toggleOther.addEventListener("click", () => {
+          OTHERLayer.visible = !OTHERLayer.visible;
+          toggleOther.classList.toggle("active", OTHERLayer.visible);
+        });
+        togglePssa.addEventListener("click", () => {
+          PSSALayer.visible = !PSSALayer.visible;
+          togglePssa.classList.toggle("active", PSSALayer.visible);
+        });
+        toggleGpi3030.addEventListener("click", () => {
+          GPI3030Layer.visible = !GPI3030Layer.visible;
+          toggleGpi3030.classList.toggle("active", GPI3030Layer.visible);
+        });
+        toggleApei.addEventListener("click", () => {
+          APEILayer.visible = !APEILayer.visible;
+          toggleApei.classList.toggle("active", APEILayer.visible);
+        });
+        toggleFish.addEventListener("click", () => {
+          fishLayer.visible = !fishLayer.visible;
+          toggleFish.classList.toggle("active", fishLayer.visible);
+        });
+        toggleS.addEventListener("click", () => {
+          SLayer.visible = !SLayer.visible;
+          toggleS.classList.toggle("active", SLayer.visible);
+        });
+        toggleFao.addEventListener("click", () => {
+          FaoLayer.visible = !FaoLayer.visible;
+          toggleFao.classList.toggle("active", FaoLayer.visible);
+        });
+        toggleGuan.addEventListener("click", () => {
+          GuanLayer.visible = !GuanLayer.visible;
+          toggleGuan.classList.toggle("active", GuanLayer.visible);
+        });
+        toggleEbsas.addEventListener("click", () => {
+          ebsasLayer.visible = !ebsasLayer.visible;
+          toggleEbsas.classList.toggle("active", ebsasLayer.visible);
+        });
+        toggleIMMA.addEventListener("click", () => {
+          IMMALayer.visible = !IMMALayer.visible;
+          toggleIMMA.classList.toggle("active", IMMALayer.visible);
+        });
+        toggleIbaspnt.addEventListener("click", () => {
+          IBAs_pntLayer.visible = !IBAs_pntLayer.visible;
+          toggleIbaspnt.classList.toggle("active", IBAs_pntLayer.visible);
+        });
+        toggleIbaspol.addEventListener("click", () => {
+          IBAs_polLayer.visible = !IBAs_polLayer.visible;
+          toggleIbaspol.classList.toggle("active", IBAs_polLayer.visible);
+        });
+        togglekbaspnt.addEventListener("click", () => {
+          KBASs_pntLayer.visible = !KBASs_pntLayer.visible;
+          togglekbaspnt.classList.toggle("active", KBASs_pntLayer.visible);
+        });
+        togglekbaspol.addEventListener("click", () => {
+          KBASs_polLayer.visible = !KBASs_polLayer.visible;
+          togglekbaspol.classList.toggle("active", KBASs_polLayer.visible);
+        });
+        togglepaphs.addEventListener("click", () => {
+          paphsLayer.visible = !paphsLayer.visible;
+          togglepaphs.classList.toggle("active", paphsLayer.visible);
+        });
+
+        toggleduo1.addEventListener("click", () => {
+          duo1Layer.visible = !duo1Layer.visible;
+          toggleduo1.classList.toggle("active", duo1Layer.visible);
+        });
+        togglefu.addEventListener("click", () => {
+          fuLayer.visible = !fuLayer.visible;
+          togglefu.classList.toggle("active", fuLayer.visible);
+        });
+        toggleduo2.addEventListener("click", () => {
+          duo2Layer.visible = !duo2Layer.visible;
+          toggleduo2.classList.toggle("active", duo2Layer.visible);
+        });
+        togglezhong.addEventListener("click", () => {
+          zhongLayer.visible = !zhongLayer.visible;
+          togglezhong.classList.toggle("active", zhongLayer.visible);
+        });
+
+        toggleyanhai.addEventListener("click", () => {
+          yanhaiLayer.visible = !yanhaiLayer.visible;
+          toggleyanhai.classList.toggle("active", yanhaiLayer.visible);
+        });
+        togglemeiguo.addEventListener("click", () => {
+          meiguoLayer.visible = !meiguoLayer.visible;
+          togglemeiguo.classList.toggle("active", meiguoLayer.visible);
+        });
+        togglemain.addEventListener("click", () => {
+          mainLayer.visible = !mainLayer.visible;
+          togglemain.classList.toggle("active", mainLayer.visible);
+        });
+
+      // **1. 添加比例尺**
+      const scaleBar = new ScaleBar({
+        view: view,
+        unit: "metric" // 使用公制单位
+      });
+      view.ui.add(scaleBar, {
+        position: "bottom-right" // 修改比例尺位置到右下角
+      });
+
+    
+      // **2. 添加经纬度显示**
+      // 添加经纬度信息的容器到 HTML
+      const coordinatesDiv = document.createElement("div");
+      coordinatesDiv.style.position = "absolute";
+      coordinatesDiv.style.bottom = "50px"; // 更改位置
+      coordinatesDiv.style.right = "10px"; // 移动到右侧
+      coordinatesDiv.style.background = "rgba(255, 255, 255, 0.8)"; // 设置半透明背景
+      coordinatesDiv.style.color = "#333"; // 设置字体颜色
+      coordinatesDiv.style.padding = "10px"; // 增加内边距
+      coordinatesDiv.style.fontSize = "16px"; // 增加字体大小
+      coordinatesDiv.style.borderRadius = "8px"; // 增加圆角
+      coordinatesDiv.innerText = "Latitude: , Longitude: ";
+      document.body.appendChild(coordinatesDiv);
+
+      // 监听鼠标移动事件并更新经纬度信息
+      view.on("pointer-move", function (event) {
+        const screenPoint = {
+          x: event.x,
+          y: event.y
+        };
+        const mapPoint = view.toMap(screenPoint);
+        if (mapPoint) {
+          const lat = mapPoint.latitude.toFixed(6); // 更精确的经纬度
+          const lon = mapPoint.longitude.toFixed(6);
+          coordinatesDiv.innerText = `Latitude: ${lat}, Longitude:${lon}`; // 格式化输出
+        }
+      });
+
+    
+      // **3. 添加鹰眼地图**
+      // 创建鹰眼地图的容器到 HTML
+      const overviewDiv = document.createElement("div");
+      overviewDiv.id = "overviewDiv";
+      overviewDiv.style.position = "absolute";
+      overviewDiv.style.top = "500px"; // 可以根据需要调整顶部位置
+      overviewDiv.style.left = `${window.innerWidth - 400}px`; // 370px 是考虑到边框和可能的间距后的宽度
+      overviewDiv.style.width = "350px";
+      overviewDiv.style.height = "250px";
+      overviewDiv.style.border = "2px solid #ccc";
+      overviewDiv.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.3)";
+      document.body.appendChild(overviewDiv);
+    
+      // 初始化鹰眼地图
+      const overviewMap = new Map({
+        basemap: "topo-vector"
+      });
+    
+      const overviewView = new MapView({
+        container: "overviewDiv",
+        map: overviewMap,
+        constraints: {
+          rotationEnabled: false, // 禁用旋转
+          snapToZoom: false // 禁用缩放对齐
+        }
+      });
+    
+      // // 同步主视图和鹰眼地图的范围
+      view.watch("extent", function (extent) {
+        overviewView.extent = extent; // 将主视图的范围同步到鹰眼地图
+      });  
+        // **切换图层显示/隐藏函数**
+        function toggleLayer(layer) {
+        // 判断当前图层的可见性，并根据当前状态进行切换
+        layer.visible = !layer.visible;
+        if (layer.visible) {
+          // 只在图层显示时添加到地图
+          if (!mainMap.layers.includes(layer)) {
+            mainMap.add(layer);
+            console.log(layer.id + " layer added.");
+          }
+        } else {
+          mainMap.remove(layer);
+          console.log(layer.id + " layer removed.");
+        }
+      }
+
+      // // **加载完成事件**
+      // sceneView.when(() => {
+      //   console.log("3D SceneView 加载完成！");
+      // });
+
+      // // **监听地图视图更新状态**
+      // reactiveUtils.watch(
+      //   () => sceneView.updating,
+      //   (updating) => {
+      //     if (!updating) {
+      //       console.log("地图图层加载完成！");
+      //     }
+      //   }
+      // );
+          });
+        </script>
+        <script>
+          layui.use('element', function(){
+              var element = layui.element;
+          });
+          </script>
+          <script>
+             document.addEventListener('DOMContentLoaded', function () {
+              var sidebar = document.getElementById("sidebar");
+              var mainContent = document.getElementById("main-content");
+            
+              function toggleSidebar() {
+                  // 检查当前 left 值并切换状态
+                  if (sidebar.style.left === "-250px") { // 如果侧边栏收起
+                      sidebar.style.left = "0"; // 展开侧边栏
+                      mainContent.style.marginLeft = "250px"; // 主内容相应移动
+                      sidebar.classList.add('active'); // 添加展开状态的类
+                  } else { // 侧边栏展开
+                      sidebar.style.left = "-250px"; // 收起侧边栏
+                      mainContent.style.marginLeft = "0"; // 主内容回到原位
+                      sidebar.classList.remove('active'); // 移除展开状态的类
+                  }
+              }
+            
+              // 绑定按钮事件
+              document.querySelector('.toggle-btn').addEventListener('click', toggleSidebar);
+          });
+      </script>
+       <script src="//unpkg.com/layui@2.9.17/dist/layui.js"></script>
+  </body>
+</html>
